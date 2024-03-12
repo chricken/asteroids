@@ -1,0 +1,14 @@
+html,
+body {
+    position: relative;
+    min-height: 100%;
+    margin:0;
+    padding:0;
+    background-color: #000;
+}
+
+#spielfeld{
+    position: fixed;
+    left:0;
+    right:0;
+}
