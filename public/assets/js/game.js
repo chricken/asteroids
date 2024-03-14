@@ -1,9 +1,11 @@
 'use strict';
 
+import render from './render.js';
 import settings, {elements} from './settings.js';
 import com from './com.js';
 
 const game = {
+    
     resizeSpielfeld(){
         elements.c.width = window.innerWidth;
         elements.c.height = window.innerHeight;

@@ -10,7 +10,6 @@ const domMapping = () => {
     elements.c = document.querySelector('#spielfeld');
 }
 
-
 const handleKeyDown = evt => {
     switch (evt.key) {
         case 'ArrowLeft':

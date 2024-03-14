@@ -1,6 +1,7 @@
 'use strict';
 
 import settings, { elements } from './settings.js';
+import render from './render.js';
 
 const com = {
     socket: false,
@@ -11,18 +12,22 @@ const com = {
     },
 
     updateServer() {
+        let payload = {
+            thrust: settings.thrust,
+            rotate: settings.rotate,
+            shoot: settings.shoot,
+        }
+
+        // console.log(payload);
         com.socket.send(JSON.stringify({
             type: 'update',
-            payload: {
-                thrust: settings.thrust,
-                rotate: settings.rotate,
-                shoot: settings.shoot,
-            }
+            payload
         }))
     },
 
-    updateClient(data){
-        console.log(data);
+    updateClient(data) {
+        render.init();
+        render.players(data.players);
     },
 
     init() {

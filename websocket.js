@@ -35,8 +35,9 @@ const websocket = {
 
         // Auf Nachricht warten
         socket.on('message', data => {
+            data = JSON.parse(data.toString())
+            // console.log(data.payload.thrust);
 
-            // Nachricht verteilen
             switch (data.type) {
                 case 'msg':
                     websocket.handleMsg(data.payload, socket);
@@ -49,11 +50,16 @@ const websocket = {
             }
         });
 
+        // Client unterbricht die Verbindung
+        socket.on('close', () => {
+            // console.log(player);
+            game.players = game.players.filter(p => p != player);
+        })
     },
 
     updateClients() {
         wss.clients.forEach(client => {
-            console.log(client.readyState);
+            // console.log(client.readyState);
             // if (client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify({
                 type: 'update',

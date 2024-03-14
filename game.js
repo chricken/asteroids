@@ -24,13 +24,12 @@ const game = {
         player.thrust = data.thrust;
         player.rotate = data.rotate;
         player.shoot = data.shoot;
-        // console.log(player);
     },
     update(){
-        this.players.forEach(player => player.update());
-        this.asteroids.forEach(asteroid => asteroid.update());
-        this.ufos.forEach(ufo => ufo.update());
-        this.shots.forEach(shot => shot.update());
+        game.players.forEach(player => player.update());
+        game.asteroids.forEach(asteroid => asteroid.update());
+        game.ufos.forEach(ufo => ufo.update());
+        game.shots.forEach(shot => shot.update());
     }
 }
 
