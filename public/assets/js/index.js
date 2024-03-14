@@ -3,6 +3,7 @@
 // KONSTANTEN / VARIABLEN
 import settings, {elements} from './settings.js';
 import game from './game.js';
+import com from './com.js';
 
 // FUNKTIONEN
 const domMapping = () => {
@@ -16,6 +17,7 @@ const appendEventlisteners = () => {
 const init = () => {
     domMapping();
     appendEventlisteners();
+    com.init();
     game.init();
 }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import { WebSocketServer } from 'ws';
-const wss = new WebSocketServer({ port: 8080 });
+let wss;
 
 const websocket = {
     socketID: 1,
@@ -12,11 +12,18 @@ const websocket = {
         })
     },
 
-    applyEventListeners(socket) {
+    addClient(socket) {
         socket.on('error', console.error);
 
         // Eindeutige ID zuweisen
         socket.id = websocket.socketID++;
+
+        socket.send(JSON.stringify({
+            type:'handshake',
+            payload:{
+                msg:'Hallo und Willkommen'
+            }
+        }))
 
         // Auf Nachricht warten
         socket.on('message', data => {
@@ -32,11 +39,14 @@ const websocket = {
             }
         });
 
-        socket.send('something');
     },
 
     init() {
-        wss.on('connection', webspocket.applyEventListeners);
+        return new Promise(resolve => {
+            wss = new WebSocketServer({ port: 8080 });
+            wss.on('listening', resolve)
+            wss.on('connection', websocket.addClient);
+        })
     }
 }
 

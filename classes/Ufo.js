@@ -1,12 +1,13 @@
 'use strict';
 
-class Asteroid {
+class Ufo {
     constructor(){
 
     }
+
     update(){
-        
+
     }
 }
 
-export default Asteroid;
+export default Ufo;

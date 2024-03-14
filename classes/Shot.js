@@ -1,12 +1,13 @@
 'use strict';
 
-class Asteroid {
+class Shot {
     constructor(){
 
     }
+
     update(){
-        
+
     }
 }
 
-export default Asteroid;
+export default Shot;
