@@ -1,8 +1,12 @@
 'use strict';
 
 const settings = {
-    elements:{}
+    elements: {},
+    socketID: false,
+    thrust:false,
+    rotate:0,
+    shoot:true,
 }
 
-export default  settings;
+export default settings;
 export const elements = settings.elements;

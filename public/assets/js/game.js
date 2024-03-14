@@ -1,6 +1,7 @@
 'use strict';
 
 import settings, {elements} from './settings.js';
+import com from './com.js';
 
 const game = {
     resizeSpielfeld(){
@@ -9,6 +10,7 @@ const game = {
     },
     init(){
         game.resizeSpielfeld();
+        
     }
 }
 
