@@ -6,9 +6,8 @@ const render = {
     players(data) {
         const c = elements.c;
         const ctx = c.getContext('2d');
-
+        // console.clear();
         data.forEach(player => {
-            // console.log(player.x, player.y);
             ctx.save()
             ctx.translate(
                 player.x * c.width,
@@ -17,7 +16,7 @@ const render = {
             ctx.rotate(player.angle);
 
             // ctx.fillStyle = player.color;
-            ctx.fillStyle = '#fff'; 
+            ctx.fillStyle = '#fff';
             ctx.fillRect(
                 (0 - player.size / 4) * c.width,
                 (0 - player.size / 2) * c.height,

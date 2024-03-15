@@ -18,7 +18,6 @@ const com = {
             shoot: settings.shoot,
         }
 
-        // console.log(payload);
         com.socket.send(JSON.stringify({
             type: 'update',
             payload

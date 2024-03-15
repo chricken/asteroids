@@ -10,18 +10,18 @@ class Player {
         this.rotate = 0;
         this.speedX = 0;
         this.speedY = 0;
-        this.acceleration = .01;
+        this.acceleration = .0001;
         this.color = `hsl(${~~(Math.random() * 360)},70%,70%)`;
     }
 
     update() {
         // Aus dem Winkel und der Beschleunigung muss die Bechleunigung in X- und in Y-Richtung errechnet werden
         if(this.thrust) {
-            this.speed += this.acceleration;
+            this.speedY += this.acceleration;
         }
-        this.y += this.speed;
+        this.y += this.speedY;
         this.y = this.y % 1;
-        // console.log(this.thrust);
+        // console.log('Player', this.y);
     }
 }
 

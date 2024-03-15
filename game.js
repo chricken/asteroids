@@ -20,6 +20,7 @@ const game = {
     },
     
     updatePlayer(data, player){
+        // console.log(data);
         // Es wird davon ausgegangen, dass der Benutzer Rotations- und Beschleunigungsdaten übergibt
         player.thrust = data.thrust;
         player.rotate = data.rotate;
