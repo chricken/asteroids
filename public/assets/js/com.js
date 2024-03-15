@@ -27,6 +27,7 @@ const com = {
     updateClient(data) {
         render.init();
         render.players(data.players);
+        render.flameParticles(data.flameParticles);
     },
 
     init() {

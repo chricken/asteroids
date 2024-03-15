@@ -4,30 +4,32 @@ import websocket from './websocket.js';
 import Player from './classes/Player.js';
 
 const game = {
-    players:[],
-    asteroids:[],
-    ufos:[],
-    shots:[],
-    addPlayer(){
+    players: [],
+    asteroids: [],
+    ufos: [],
+    shots: [],
+    flameParticles: [],
+    addPlayer() {
         const player = new Player();
 
         game.players.push(player);
         return player;
 
     },
-    removePlayer(){
+    removePlayer() {
 
     },
-    
-    updatePlayer(data, player){
+
+    updatePlayer(data, player) {
         // console.log(data);
         // Es wird davon ausgegangen, dass der Benutzer Rotations- und Beschleunigungsdaten übergibt
         player.thrust = data.thrust;
         player.rotate = data.rotate;
         player.shoot = data.shoot;
     },
-    update(){
+    update() {
         game.players.forEach(player => player.update());
+        game.flameParticles.forEach(flameParticle => flameParticle.update());
         game.asteroids.forEach(asteroid => asteroid.update());
         game.ufos.forEach(ufo => ufo.update());
         game.shots.forEach(shot => shot.update());
