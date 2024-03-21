@@ -3,14 +3,14 @@
 import game from '../game.js';
 
 class FlameParticles {
-    constructor(x, y, direction, inheritX, inheritY) {
+    constructor(x, y, direction, inheritX, inheritY, relativeSpeed = .01) {
         // console.log(x, y, direction);
         this.x = x;
         this.y = y;
         this.spread = .6;
         this.direction = direction + (Math.random() * this.spread - (this.spread / 2));
         this.size = .003;
-        this.relativeSpeed = .01;
+        this.relativeSpeed = relativeSpeed;
         this.color = [80, 100, 70];
         this.colorFader = [4, 1, 2];
 

@@ -64,6 +64,7 @@ const websocket = {
             client.send(JSON.stringify({
                 type: 'update',
                 payload: {
+                    asteroids: game.asteroids,
                     players: game.players,
                     flameParticles: game.flameParticles,
                 }

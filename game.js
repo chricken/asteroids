@@ -2,6 +2,7 @@
 
 import websocket from './websocket.js';
 import Player from './classes/Player.js';
+import Asteroid from './classes/Asteroid.js';
 
 const game = {
     players: [],
@@ -9,6 +10,7 @@ const game = {
     ufos: [],
     shots: [],
     flameParticles: [],
+    numAsteroids: 10,
     addPlayer() {
         const player = new Player();
 
@@ -27,12 +29,21 @@ const game = {
         player.rotate = data.rotate;
         player.shoot = data.shoot;
     },
+
     update() {
         game.players.forEach(player => player.update());
         game.flameParticles.forEach(flameParticle => flameParticle.update());
         game.asteroids.forEach(asteroid => asteroid.update());
         game.ufos.forEach(ufo => ufo.update());
         game.shots.forEach(shot => shot.update());
+    },
+
+    init() {
+        for (let i = 0; i < game.numAsteroids; i++) {
+            game.asteroids.push(
+                new Asteroid()
+            )
+        }
     }
 }
 

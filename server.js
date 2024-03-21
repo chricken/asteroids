@@ -11,6 +11,8 @@ server.use(express.static('public', {
 
 const init = () => {
     websocket.init().then(
+        game.init
+    ).then(
         () => server.listen(80, err => console.log(err || 'Server läuft'))
     ).then(
         () => setInterval(game.update, 30)

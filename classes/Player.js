@@ -17,7 +17,7 @@ class Player {
         this.speedAngular = 0;
         this.acceleration = .0001;
         this.accelerationAngular = .006;
-        
+
         this.friction = .005;
         this.frictionAngular = .005;
         this.color = `hsl(${~~(Math.random() * 360)},70%,70%)`;
@@ -69,6 +69,23 @@ class Player {
         this.angle = (this.angle + (2 * Math.PI)) % (2 * Math.PI);
         // console.log(this.angle);
 
+        // Rotationsfeuer
+        if (this.rotate) {
+            if (Math.random() < (this.probabilityFlameParticle / 2)) {
+                game.flameParticles.push(
+                    new FlameParticle(
+                        this.x,
+                        this.y,
+                        (this.rotate > 0)
+                            ? (this.angle + (Math.PI * .5)) % (Math.PI * 2)
+                            : (this.angle + (Math.PI * 1.5)) % (Math.PI * 2),
+                        this.speedX,
+                        this.speedY,
+                        .003
+                    )
+                )
+            }
+        }
     }
 }
 
