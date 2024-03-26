@@ -5,7 +5,7 @@ const settings = {
     socketID: false,
     thrust:false,
     rotate:0,
-    shoot:true,
+    shoot:false,
 }
 
 export default settings;

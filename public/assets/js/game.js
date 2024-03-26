@@ -10,10 +10,11 @@ const game = {
         elements.c.width = window.innerWidth;
         elements.c.height = window.innerHeight;
     },
+
     init(){
         game.resizeSpielfeld();
-        
     }
+    
 }
 
 export default game;

@@ -67,6 +67,7 @@ const websocket = {
                     asteroids: game.asteroids,
                     players: game.players,
                     flameParticles: game.flameParticles,
+                    shots: game.shots,
                 }
             }));
             // }

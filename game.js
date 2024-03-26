@@ -13,7 +13,7 @@ const game = {
     numAsteroids: 10,
     addPlayer() {
         const player = new Player();
-
+        
         game.players.push(player);
         return player;
 

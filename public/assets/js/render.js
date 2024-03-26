@@ -78,16 +78,61 @@ const render = {
             ctx.beginPath()
             ctx.lineWidth = 2;
             ctx.strokeStyle = '#fff';
+            ctx.fillStyle = '#222';
             asteroid.points.forEach(point => {
-                let deltaX = Math.sin(asteroid.angle + point.angle) * point.distance;
-                let deltaY = Math.cos(asteroid.angle + point.angle) * point.distance;
+                let deltaX = Math.sin(asteroid.angle + point.angle) * point.distance * c.width;
+                let deltaY = Math.cos(asteroid.angle + point.angle) * point.distance * c.width;
                 ctx.lineTo(
-                    (asteroid.x + deltaX) * c.width,
-                    (asteroid.y + deltaY) * c.height,
+                    (asteroid.x * c.width) + deltaX,
+                    (asteroid.y * c.height) + deltaY,
                 )
             })
             ctx.closePath()
+            ctx.fill();
             ctx.stroke();
+        })
+    },
+    shots(data) {
+        const c = elements.c;
+        const ctx = c.getContext('2d');
+
+        ctx.fillStyle = '#fff';
+        ctx.lineWidth = 3;
+
+        data.forEach(shot => {
+
+            ctx.translate(
+                shot.x * c.width,
+                shot.y * c.height,
+            )
+
+            ctx.rotate(shot.angle);
+
+            ctx.strokeStyle = '#fff';
+            ctx.beginPath()
+            ctx.moveTo(
+                -.01 * c.width,
+                0
+            )
+            ctx.lineTo(
+                .00 * c.width,
+                0
+            )
+            ctx.stroke();
+
+            ctx.strokeStyle = '#f50';
+            ctx.beginPath()
+            ctx.moveTo(
+                -.015 * c.width,
+                0
+            )
+            ctx.lineTo(
+                .012 * c.width,
+                0
+            )
+            ctx.stroke();
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         })
     },
     init() {

@@ -25,10 +25,12 @@ const com = {
     },
 
     updateClient(data) {
+        // console.log(data);
         render.init();
         render.asteroids(data.asteroids);
         render.flameParticles(data.flameParticles);
         render.players(data.players);
+        render.shots(data.shots);
     },
 
     init() {

@@ -2,6 +2,7 @@
 
 import FlameParticle from "./FlameParticles.js";
 import game from '../game.js';
+import Shot from './Shot.js';
 
 class Player {
     constructor() {
@@ -13,6 +14,9 @@ class Player {
         this.rotate = 0;
         this.speedX = 0;
         this.speedY = 0;
+        this.canShoot = true;
+        this.msPerShot = 400;
+        this.lastShotTimeStamp = 0;
 
         this.speedAngular = 0;
         this.acceleration = .0001;
@@ -85,6 +89,19 @@ class Player {
                     )
                 )
             }
+        }
+
+        // Schießen
+        if (Date.now() - this.lastShotTimeStamp > this.msPerShot) {
+            this.canShoot = true;
+        }
+        if (this.shoot && this.canShoot) {
+            // console.log('Shoot', Date.now());
+            game.shots.push(new Shot(this.x, this.y, this.angle, this.speedX, this.speedY));
+
+            // Schuss zurücksetzen
+            this.lastShotTimeStamp = Date.now();
+            this.canShoot = false;
         }
     }
 }
