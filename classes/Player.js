@@ -27,7 +27,25 @@ class Player {
         this.color = `hsl(${~~(Math.random() * 360)},70%,70%)`;
         this.probabilityFlameParticle = 1;
     }
+    breakUp(collider) {
+        game.players = game.players.filter(p => p != this);
+        if (collider) collider.breakUp();
 
+        // Funken fliegen
+        for (let i = 0; i < 20; i++) {
+            game.flameParticles.push(
+                new FlameParticle(
+                    this.x,
+                    this.y,
+                    0,
+                    this.speedX,
+                    this.speedY,
+                    Math.random() * .003 + .001,
+                    Math.PI * 2
+                )
+            )
+        }
+    }
     update() {
         // Lineare Bewegung
         if (this.thrust) {
@@ -103,7 +121,20 @@ class Player {
             this.lastShotTimeStamp = Date.now();
             this.canShoot = false;
         }
+
+        // Kollision mit Asteroid
+        for (let i = 0; i < game.asteroids.length; i++) {
+            let asteroid = game.asteroids[i];
+            let distance = Math.hypot(
+                asteroid.x - this.x,
+                asteroid.y - this.y,
+            )
+            if (distance < asteroid.size * 2) {
+                this.breakUp(asteroid);
+            }
+        }
     }
+
 }
 
 export default Player;

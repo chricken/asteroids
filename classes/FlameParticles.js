@@ -1,13 +1,14 @@
 'use strict';
 
 import game from '../game.js';
+import FlameParticle from "./FlameParticles.js";
 
 class FlameParticles {
-    constructor(x, y, direction, inheritX, inheritY, relativeSpeed = .01) {
+    constructor(x, y, direction, inheritX, inheritY, relativeSpeed = .01, spread = .6) {
         // console.log(x, y, direction);
         this.x = x;
         this.y = y;
-        this.spread = .6;
+        this.spread = spread;
         this.direction = direction + (Math.random() * this.spread - (this.spread / 2));
         this.size = .003;
         this.relativeSpeed = relativeSpeed;

@@ -10,7 +10,7 @@ const game = {
     ufos: [],
     shots: [],
     flameParticles: [],
-    numAsteroids: 10,
+    numAsteroids: 0,
     addPlayer() {
         const player = new Player();
         
