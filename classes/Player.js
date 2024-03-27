@@ -129,12 +129,11 @@ class Player {
                 asteroid.x - this.x,
                 asteroid.y - this.y,
             )
-            if (distance < asteroid.size * 2) {
+            if (distance < asteroid.size * 2 + this.size / 2) {
                 this.breakUp(asteroid);
             }
         }
     }
-
 }
 
 export default Player;

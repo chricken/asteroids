@@ -34,7 +34,8 @@ const com = {
     },
 
     init() {
-        com.socket = new WebSocket('ws://localhost:8080');
+        // com.socket = new WebSocket(`ws://${window.location.host}:8080`);
+        com.socket = new WebSocket(`ws://194.164.206.102:8080`);
         com.socket.addEventListener('message', msg => {
             let data = JSON.parse(msg.data);
             switch (data.type) {
